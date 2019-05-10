@@ -1,17 +1,15 @@
 import yaml
 import os
 
+def yaml_safe_load(yaml_file):
+    with open(yaml_file, 'r') as stream:
+        return yaml.safe_load(stream)
+
+def yaml_safe_dump(data, yaml_file):
+    with open(yaml_file, 'w') as outfile:
+        yaml.safe_dump(data, outfile, default_flow_style=False)
+
 class ConfigLoader(object):
-
-    @staticmethod
-    def yaml_safe_load(yaml_file):
-        with open(yaml_file, 'r') as stream:
-            return yaml.safe_load(stream)
-
-    @staticmethod
-    def yaml_safe_dump(data, yaml_file):
-        with open(yaml_file, 'w') as outfile:
-            yaml.safe_dump(data, outfile, default_flow_style=False)
 
     def __init__(self):
         self.user_config = os.path.join(os.path.dirname(__file__), '..', 'config.yml')
