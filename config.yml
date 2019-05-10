@@ -1,3 +1,5 @@
+name: cognition-catalog
+
 sat-api:
   bucket: cognition-catalog-sat-api
   subnets:
