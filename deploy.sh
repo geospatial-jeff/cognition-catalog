@@ -11,12 +11,6 @@ git clone https://github.com/sat-utils/sat-api-deployment.git
 # Update deployment configurations
 cognition-catalog load_user_config
 
-############################
-# Deploy cognition-catalog #
-############################
-echo "Deploying cognition-catalog."
-(cd catalog && sls deploy -v)
-
 ################################
 # Deploy cognition-datasources #
 ################################
@@ -67,4 +61,9 @@ echo "Deployment Information:"
 echo Cognition-Datasources endpoint: "${cd_endpoint::-11}"
 echo Sat-API endpoint: "${satapi_endpoint/stage/dev}"
 
+############################
+# Deploy cognition-catalog #
+############################
+echo "Deploying cognition-catalog."
+(cd catalog && sls deploy -v)
 
