@@ -8,6 +8,12 @@ git clone https://github.com/sat-utils/sat-api-deployment.git
 # Update deployment configurations
 python config_loader.py
 
+############################
+# Deploy cognition-catalog #
+############################
+echo "Deploying cognition-catalog."
+(cd catalog && sls deploy -v)
+
 ################################
 # Deploy cognition-datasources #
 ################################
@@ -34,6 +40,9 @@ echo "Building deployment package."
     echo "Deploying to AWS." && \
     sls deploy -v)
 
+
+cd_endpoint="$(echo "$(cd cognition-datasources && sls info)" | sed 1d | shyaml get-value endpoints)"
+
 ##################
 # Deploy sat-api #
 ##################
@@ -43,3 +52,8 @@ echo "Deploying sat-api."
     ./node_modules/.bin/kes cf deploy --region us-east-1 --template .kes/template --showOutputs)
 
 
+##########################
+# Deployment information #
+##########################
+echo "Deployment Information:"
+echo Cognition-Datasources endpoint: $cd_endpoint
