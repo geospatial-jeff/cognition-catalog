@@ -1,0 +1,21 @@
+service: cognition-catalog
+provider:
+  name: aws
+  region: us-east-1
+  runtime: python3.6
+
+  iamRoleStatementsName: cognition-catalog-role
+
+
+resources:
+  Resources:
+
+    NewSTACItemTopic:
+      Type: AWS::SNS::Topic
+      Properties:
+        TopicName: NewSTACItem
+
+    SatAPIDeploymentBucket:
+      Type: AWS::S3::Bucket
+      Properties:
+        BucketName: cognition-catalog-sat-api
