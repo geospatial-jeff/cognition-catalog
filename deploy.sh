@@ -21,7 +21,6 @@ echo "Loading datasource drivers."
 datasources="$(cat config.yml | shyaml get-values cognition-datasources.drivers)"
 load_drivers="cognition-datasources load"
 while read -r line; do
-    echo "$line"
     load_drivers+=" -d "$line""
 done <<< "$datasources"
 
@@ -38,6 +37,7 @@ echo "Building deployment package."
 ##################
 # Deploy sat-api #
 ##################
+echo "Deploying sat-api."
 (cd sat-api-deployment && ./node_modules/.bin/kes cf deploy --region us-east-1 --template .kes/template --showOutputs)
 
 
