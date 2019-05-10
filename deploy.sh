@@ -1,6 +1,6 @@
-################################
+##############
 # Setting up #
-################################
+##############
 # Install cognition-catalog CLI
 python setup.py develop
 
