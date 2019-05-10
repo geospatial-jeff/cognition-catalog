@@ -38,6 +38,8 @@ echo "Building deployment package."
 # Deploy sat-api #
 ##################
 echo "Deploying sat-api."
-(cd sat-api-deployment && ./node_modules/.bin/kes cf deploy --region us-east-1 --template .kes/template --showOutputs)
+(cd sat-api-deployment && \
+    yarn && \
+    ./node_modules/.bin/kes cf deploy --region us-east-1 --template .kes/template --showOutputs)
 
 
