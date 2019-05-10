@@ -1,12 +1,15 @@
 ################################
 # Setting up #
 ################################
+# Install cognition-catalog CLI
+python setup.py develop
+
 # Clone libraries
 git clone https://github.com/geospatial-jeff/cognition-datasources.git
 git clone https://github.com/sat-utils/sat-api-deployment.git
 
 # Update deployment configurations
-python config_loader.py
+cognition-catalog load_user_config
 
 ############################
 # Deploy cognition-catalog #

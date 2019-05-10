@@ -14,10 +14,10 @@ class ConfigLoader(object):
             yaml.safe_dump(data, outfile, default_flow_style=False)
 
     def __init__(self):
-        self.user_config = os.path.join(os.path.dirname(__file__), 'config.yml')
-        self.api_config = os.path.join(os.path.dirname(__file__), 'sat-api-deployment', '.kes', 'config.yml')
-        self.cd_config = os.path.join(os.path.dirname(__file__), 'cognition-datasources', 'serverless.yml')
-        self.catalog_config = os.path.join(os.path.dirname(__file__), 'catalog', 'serverless.yml')
+        self.user_config = os.path.join(os.path.dirname(__file__), '..', 'config.yml')
+        self.api_config = os.path.join(os.path.dirname(__file__), '..', 'sat-api-deployment', '.kes', 'config.yml')
+        self.cd_config = os.path.join(os.path.dirname(__file__), '..', 'cognition-datasources', 'serverless.yml')
+        self.catalog_config = os.path.join(os.path.dirname(__file__), '..', 'catalog', 'serverless.yml')
         self.configs = self.load_configs(['user_config', 'api_config', 'cd_config', 'catalog_config'])
 
     def load_configs(self, file_list):
