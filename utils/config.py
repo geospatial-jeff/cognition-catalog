@@ -28,7 +28,6 @@ class ConfigLoader(object):
         """Build cognition-datasources and sat-api configuration with values from catalog configuration"""
 
         # Update cognition-catalog configuration
-        self.configs['catalog_config']['resources']['Resources']['SatAPIDeploymentBucket']['BucketName'] = self.configs['user_config']['sat-api']['bucket']
         self.configs['catalog_config']['service'] = self.configs['user_config']['name']
 
         # Update sat-api configuration

@@ -49,6 +49,10 @@ cd_endpoint="${cd_endpoint:7}"
 ##################
 # Deploy sat-api #
 ##################
+
+# Create deployment bucket for sat-api.
+aws s3api create-bucket --bucket "$(cat config.yml | shyaml get-value sat-api.bucket)" --region us-east-1
+
 echo "Deploying sat-api."
 (cd sat-api-deployment && \
     yarn && \

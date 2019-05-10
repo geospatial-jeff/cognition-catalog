@@ -14,8 +14,3 @@ resources:
       Type: AWS::SNS::Topic
       Properties:
         TopicName: NewSTACItem
-
-    SatAPIDeploymentBucket:
-      Type: AWS::S3::Bucket
-      Properties:
-        BucketName: cognition-catalog-sat-api
