@@ -1,0 +1,15 @@
+sat-api:
+  bucket: cognition-catalog-sat-api
+  subnets:
+    - subnet-5795541b
+    - subnet-be56c8c4
+    - subnet-c10626a9
+  security-group: sg-5f220a32
+
+cognition-datasources:
+  name: cognition-catalog-datasources
+  stage: dev
+  drivers:
+    - Landsat8
+    - Sentinel2
+    - CBERS
