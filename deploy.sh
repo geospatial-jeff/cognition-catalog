@@ -40,8 +40,8 @@ echo "Building deployment package."
     echo "Deploying to AWS." && \
     sls deploy -v)
 
-
 cd_endpoint="$(echo "$(cd cognition-datasources && sls info)" | sed 1d | shyaml get-value endpoints)"
+cd_endpoint="${cd_endpoint:7}"
 
 ##################
 # Deploy sat-api #
@@ -49,11 +49,15 @@ cd_endpoint="$(echo "$(cd cognition-datasources && sls info)" | sed 1d | shyaml 
 echo "Deploying sat-api."
 (cd sat-api-deployment && \
     yarn && \
-    ./node_modules/.bin/kes cf deploy --region us-east-1 --template .kes/template --showOutputs)
+    ./node_modules/.bin/kes cf deploy --region us-east-1 --template .kes/template --showOutputs >> kes_output)
 
+satapi_endpoint="$(tail -1 sat-api-deployment/kes_output | head -1)"
 
 ##########################
 # Deployment information #
 ##########################
 echo "Deployment Information:"
-echo Cognition-Datasources endpoint: $cd_endpoint
+echo Cognition-Datasources endpoint: "${cd_endpoint::-11}"
+echo Sat-API endpoint: "${satapi_endpoint/stage/dev}"
+
+
