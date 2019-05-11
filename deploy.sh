@@ -58,7 +58,7 @@ satapi_endpoint="$(tail -1 sat-api-deployment/kes_output | head -1)"
 # Deploy cognition-catalog #
 ############################
 cognition-catalog add_environment_variable catalog/serverless.yml --key CD_ENDPOINT --value "${cd_endpoint::-11}"
-cognition-catalog add_environment_variable catalog/serverless.yml --key SATAPI_ENDPOINT --value "${cd_endpoint::-11}"
+cognition-catalog add_environment_variable catalog/serverless.yml --key SATAPI_ENDPOINT --value "${satapi_endpoint/stage/dev}"
 
 echo "Deploying cognition-catalog."
 (cd catalog && sls deploy -v)
