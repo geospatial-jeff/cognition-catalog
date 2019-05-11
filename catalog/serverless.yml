@@ -3,9 +3,11 @@ provider:
   name: aws
   region: us-east-1
   runtime: python3.6
-
   iamRoleStatementsName: cognition-catalog-role
-
+  iamRoleStatements:
+    - Action:
+        - sns:*
+        - sqs:*
 
 resources:
   Resources:
@@ -13,4 +15,9 @@ resources:
     NewSTACItemTopic:
       Type: AWS::SNS::Topic
       Properties:
-        TopicName: NewSTACItem
+        TopicName: NewSTACItemTopic
+
+    NewSTACItemQueue:
+      Type: AWS::SQS::Queue
+      Properties:
+        QueueName: NewSTACItemQueue
