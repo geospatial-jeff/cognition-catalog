@@ -19,7 +19,7 @@ class ConfigLoader(object):
         self.configs = self.load_configs(['user_config', 'api_config', 'cd_config', 'catalog_config'])
 
     def load_configs(self, file_list):
-        configs = {x:self.yaml_safe_load(getattr(self, x)) for x in file_list}
+        configs = {x:yaml_safe_load(getattr(self, x)) for x in file_list}
         return configs
 
     def build_configs(self):
@@ -40,9 +40,9 @@ class ConfigLoader(object):
     def write_configs(self):
         """Write configuration files"""
         print("Updating cognition-datasources configuration.")
-        self.yaml_safe_dump(self.configs['cd_config'], self.cd_config)
+        yaml_safe_dump(self.configs['cd_config'], self.cd_config)
         print("Updating sat-api configuration.")
-        self.yaml_safe_dump(self.configs['api_config'], self.api_config)
+        yaml_safe_dump(self.configs['api_config'], self.api_config)
 
 if __name__ == "__main__":
     config = ConfigLoader()
